@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <title>CGPA calculator</title>
+    </head>
+    <body style="background-color:rgb(59, 133, 179);">
+        <div class="container mt-5 justify-content-center">
+            <h2 class="text-center"> <b>CGPA CALCULATOR </b></h2>
+            <div class="card border border-2 border-"></div>
+                <div class="card-body text-center">
+                    <form id="form" class="was-validated">
+                        <table class="table" style="background-color:white;">
+                            <tr>
+                                <td><label for="n">NAME:</label></td>
+                                <td colspan="3"><input type="text" id="n"  ></td>
+                                
+                            </tr>
+                            <tr>
+                                <td><label for="name">ROLL NO:</label></td>
+                                <td colspan="3"><input type="text" id="roll" >
+
+                            </tr>
+                            <tr>
+                                <th colspan="4" style="text-align: center;">ENTER  MARKS AND CREDITS</th>
+                            </tr>
+                            <tr>
+                                <th>SUBJECT</th>
+                                <th>GRADE POINTS</th>
+                                <th>CREDITS</th>
+                                <th>GRADE</th>
+                            </tr>
+                            <tr>
+                                <td><label >PROBABILITY AND STATISTICS:</label></td>
+                                <td><input type="number" id="mark1" ></td>
+                                <td><input type="number" id="cr1"  ></td>
+                                <td id="g1" style="color:rgb(38, 8, 237)"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="ma2">DBMS:</label></td> 
+                                <td><input type="number" id="mark2"></td>
+                                <td><input type="number" id="cr2"  ></td>
+                                <td id="g2" style="color:rgb(15, 35, 208)"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="ma3">DAA:</label></td> 
+                                <td><input type="number" id="mark3"></td>
+                                <td><input type="number" id="cr3"  ></td>
+                                <td id="g3" style="color:rgb(31, 6, 118)"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="ma4">WEB TECHNOLOGY:</label></td>
+                                <td><input type="number" id="mark4" ></td>
+                                <td><input type="number" id="cr4"  ></td>
+                                <td id="g4" style="color:rgb(26, 6, 84)"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="ma5">PYTHON</label></td>
+                                <td><input type="number" id="mark5"></td>
+                                <td><input type="number" id="cr5"  ></td>
+                                <td id="g5" style="color:rgb(18, 5, 92)"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="gpa"></label><b>PREVIOUS CGPA</b></td>
+                                <td colspan="3"><input type="number" id="gpa" ></td>
+                                
+                            </tr>
+                            <tr>
+                                <td colspan="4"><center><input type="button" value="CGPA CALCULATOR" onclick="cal()" style="background-color: azure;"></center></td>
+                            </tr>
+                             
+                              <tr style="color: rgb(20, 7, 78);">
+                                <td colspan="2"><b> CURRENT GPA IS:</b></td> 
+                                <td colspan="2"><b> CURRENT CGPA IS:</b></td> 
+                                
+                            </tr>
+                            <tr style="color: rgb(26, 5, 74);">
+                               <td colspan="2"> <h5 id="gp"></h5></td>
+                                <td colspan="2"><h5 id="cgp"></h5></td>
+
+                            </tr>
+                        </table>
+                        
+                    </form>
+                    
+                </div>
+          </div>
+        </div>
+        <script>
+            function cal(){
+                var m1,m2,m3,m4,m5,m6,m7,m8;
+                m1=document.getElementById('n').value;
+                m2=parseInt(document.getElementById('roll').value);
+                m3=parseInt(document.getElementById('mark1').value);
+                m4=parseInt(document.getElementById('mark2').value);
+                m5=parseInt(document.getElementById('mark3').value);
+                m6=parseInt(document.getElementById('mark4').value);
+                m7=parseInt(document.getElementById('mark5').value);
+
+                m8=parseFloat(document.getElementById('gpa').value);
+
+
+                c1=parseInt(document.getElementById('cr1').value);
+                c2=parseInt(document.getElementById('cr2').value);
+                c3=parseInt(document.getElementById('cr3').value);
+                c4=parseInt(document.getElementById('cr4').value);
+                c5=parseInt(document.getElementById('cr5').value);
+                var gpa1 = ((m3*c1)+(m4*c2)+(m5*c3)+(m6*c4)+(m7*c5))/(c1+c2+c3+c4+c5);
+                //var gpa1 = (m3+m4+m5+m6+m7)/50;
+                document.getElementById("gp").innerHTML=gpa1.toFixed(2);
+                var cgpa= (gpa1+ m8)/2;
+                
+                document.getElementById("cgp").innerHTML=cgpa.toFixed(2);
+                if(m3==10){
+                    document.getElementById("g1").innerHTML="O";                    
+                }
+                else if(m3== 9){
+                    document.getElementById("g1").innerHTML="A+";
+                }
+                else if(m3 == 8){
+                    document.getElementById("g1").innerHTML="A";
+                }
+                else if(m3 == 7){
+                    document.getElementById("g1").innerHTML="B+";
+                }
+                else if(m3 == 6){
+                    document.getElementById("g1").innerHTML="B";
+                }
+                else if(m3==0){
+                    document.getElementById("g1").innerHTML="RA/SF";
+                }
+                else{
+                    document.getElementById("g1").innerHTML="AB";
+                }        
+                // 2  
+                if(m4==10){
+                    document.getElementById("g2").innerHTML="O";                    
+                }
+                else if(m4== 9){
+                    document.getElementById("g2").innerHTML="A+";
+                }
+                else if(m4 == 8){
+                    document.getElementById("g2").innerHTML="A";
+                }
+                else if(m4 == 7){
+                    document.getElementById("g2").innerHTML="B+";
+                }
+                else if(m4 == 6){
+                    document.getElementById("g2").innerHTML="B";
+                }
+                else if(m4==0){
+                    document.getElementById("g2").innerHTML="RA/SF";
+                }
+                else{
+                    document.getElementById("g2").innerHTML="AB";
+                }              
+                   //3
+                   if(m5==10){
+                    document.getElementById("g3").innerHTML="O";                    
+                }
+                else if(m5== 9){
+                    document.getElementById("g3").innerHTML="A+";
+                }
+                else if(m5 == 8){
+                    document.getElementById("g3").innerHTML="A";
+                }
+                else if(m5 == 7){
+                    document.getElementById("g3").innerHTML="B+";
+                }
+                else if(m5 == 6){
+                    document.getElementById("g3").innerHTML="B";
+                }
+                else if(m5==0){
+                    document.getElementById("g3").innerHTML="RA/SF";
+                }
+                else{
+                    document.getElementById("g3").innerHTML="AB";
+                }              
+                //4
+                if(m6==10){
+                    document.getElementById("g4").innerHTML="O";                    
+                }
+                else if(m6== 9){
+                    document.getElementById("g4").innerHTML="A+";
+                }
+                else if(m6 == 8){
+                    document.getElementById("g4").innerHTML="A";
+                }
+                else if(m6 == 7){
+                    document.getElementById("g4").innerHTML="B+";
+                }
+                else if(m6 == 6){
+                    document.getElementById("g4").innerHTML="B";
+                }
+                else if(m6==0){
+                    document.getElementById("g4").innerHTML="RA/SF";
+                }
+                else{
+                    document.getElementById("g4").innerHTML="AB";
+                }              
+                //5
+                if(m7==10){
+                    document.getElementById("g5").innerHTML="O";                    
+                }
+                else if(m7== 9){
+                    document.getElementById("g5").innerHTML="A+";
+                }
+                else if(m7 == 8){
+                    document.getElementById("g5").innerHTML="A";
+                }
+                else if(m7 == 7){
+                    document.getElementById("g5").innerHTML="B+";
+                }
+                else if(m7 == 6){
+                    document.getElementById("g5").innerHTML="B";
+                }
+                else if(m7 == 0){
+                    document.getElementById("g5").innerHTML="RA/SF";
+                }
+                else{
+                    document.getElementById("g5").innerHTML="AB";
+                }              
+        }
+        </script>
+    </body>
+</html>
